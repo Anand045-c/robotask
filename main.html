@@ -1,153 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robotics Club Secretary</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #4682b4;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
-        header p {
-            margin: 10px 0 0;
-            font-size: 1.2em;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .intro {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .intro img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-        .intro h2 {
-            font-size: 1.8em;
-            color: #4682b4;
-        }
-        .intro p {
-            font-size: 1.1em;
-            line-height: 1.5;
-        }
-        .projects {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .projects h2 {
-            text-align: center;
-            font-size: 1.8em;
-            color: #4682b4;
-            margin-bottom: 20px;
-        }
-        .project-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .project {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 15px;
-            width: 300px;
-            text-align: center;
-        }
-        .project img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .project h3 {
-            font-size: 1.2em;
-            margin: 10px 0;
-            color: #333;
-        }
-        .project p {
-            font-size: 1em;
-            color: #666;
-        }
-        .cta {
-            background-color: #4682b4;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        .cta h2 {
-            font-size: 1.5em;
-            margin: 0 0 10px;
-        }
-        .cta p {
-            font-size: 1.1em;
-            margin: 0;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9em;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robotics Club Secretary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0d1b2a;
+      --bg-light: #1b263b;
+      --accent: #64ffda;
+      --text-light: #e0e1dd;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg-light);
+      padding: 20px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .intro {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .intro img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: contain;
+      border: 4px solid var(--accent);
+    }
+
+    .intro-content {
+      max-width: 600px;
+    }
+
+    .intro-content h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+
+    .intro-content p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: #cfd2d5;
+    }
+
+    .projects {
+      padding: 40px 20px;
+      background-color: var(--bg-light);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .projects h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--accent);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .project {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 30px rgba(0, 255, 204, 0.15);
+    }
+
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project h3 {
+      font-size: 1.3rem;
+      margin: 15px;
+      color: var(--accent);
+    }
+
+    .project p {
+      padding: 0 15px 20px;
+      color: #ccc;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .intro-content p {
+        font-size: 1rem;
+      }
+
+      .intro {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Join the Robotics Club!</h1>
-        <p>Meet Our Secretarys</p>
-    </header>
 
-    <section class="container intro">
-        <img src="ANAND.jpeg" alt="Secretary Profile Picture">
-        <h2>Meet Our Secretary</h2>
-        <p>
-            Hello! I'm ANAND SACHAN, the secretary of the Robotics Club At IIT Kanpur. I love robotics and keep our club organized. Join us to work on cool projects, learn new tech, and join a fun team. As secretary, I help with events and communication. Come build robots with us!
-        </p>
-    </section>
+  <header>
+    <h1>Join the Robotics Club!</h1>
+  </header>
 
-    <!-- Summer Projects Section -->
-    <section class="container projects">
-        <h2>This Year's Summer Projects</h2>
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <div class="project">
-                <img src="https://via.placeholder.com/300x150?text=Autonomous+Drone" alt="Autonomous Drone">
-                <h3>Autonomous Drone</h3>
-                <p>A drone using AI to avoid obstacles for search and rescue.</p>
-            </div>
-            <!-- Project 2 -->
-            <div class="project">
-                <img src="https://via.placeholder.com/300x150?text=Robotic+Arm" alt="Robotic Arm">
-                <h3>Robotic Arm</h3>
-                <p>A robotic arm for assembly, controlled by a mobile app.</p>
-            </div>
-            <!-- Project 3 -->
-            <div class="project">
-                <img src="https://via.placeholder.com/300x150?text=Line-Following+Bot" alt="Line-Following Bot">
-                <h3>Line-Following Bot</h3>
-                <p>A bot that follows paths, great for competitions.</p>
-            </div>
-        </div>
-    </section>
+  <section class="container intro">
+    <img src="ANAND.jpeg" alt="Secretary Profile Picture">
+    <div class="intro-content">
+      <h2>Hi, I’m Anand, the Secretary of the Robotics Club.</h2>
+      <p>
+        When I first joined college, I was deeply curious about how robots work and what goes into building them. That curiosity led me to explore the basics, and along the way, I connected with some amazing people from this club. That one step changed everything—being part of the Robotics Club gave my journey the direction, support, and momentum it needed.
+      </p>
+      <p>
+        Whether I was stuck on a concept or looking for guidance on a project, this community was always there to help. Now, as the Secretary, I’ve had the privilege to work on several exciting projects and, more importantly, to give back by supporting others on their own robotics journeys.
+      </p>
+      <p>
+        If you're passionate about innovation, problem-solving, or simply want to learn something new, I genuinely believe you'll find the Robotics Club to be as inspiring and helpful as I did. Welcome aboard!
+      </p>
+    </div>
+  </section>
+
+  <section class="container projects">
+    <h2>This Year's Summer Projects</h2>
+    <div class="project-grid">
+      <div class="project">
+        <img src="https://www.vecnarobotics.com/wp-content/uploads/2021/08/AMR-Path-Planning-A-Smarter-%E2%80%A8More-Efficient-Navigation-Method@2x.png" alt="Autonomous Drone">
+        <h3>Autonomous Navigation</h3>
+        <p>AI-powered drone for obstacle avoidance and rescue missions.</p>
+      </div>
+      <div class="project">
+        <img src="https://content.instructables.com/FVU/7H1K/M7J2IUGN/FVU7H1KM7J2IUGN.jpg?auto=webp&fit=bounds&frame=1&height=620&width=620" alt="Hexapod">
+        <h3>Hexapod</h3>
+        <p>Six-legged walking robot mimicking insect-like movement.</p>
+      </div>
+      <div class="project">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/ea4764135184395.61e3551649df6.png" alt="Ball-balancing bot">
+        <h3>Ball-balancing Bot</h3>
+        <p>A bot that balances a ball.</p>
+      </div>
+      <div class="project">
+        <img src="https://daily.jstor.org/wp-content/uploads/2018/05/mechanical_turk_1050x700.jpg" alt="Mechanical turk">
+        <h3>Mechanical turk</h3>
+        <p>In this we will make a robot that plays chess.</p>
+      </div>
+      <div class="project">
+        <img src="https://nevonprojects.com/wp-content/uploads/2021/12/stair-climber-robot-web-main.jpg" alt="StepXplorer>
+        <h3>StepXplorer</h3>
+        <p>A robot that can detact and climb stair on its own.</p>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
